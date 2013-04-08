@@ -21,14 +21,17 @@ public class Ssh {
      try {
        Session session = jSch.createSession("ekoontz","centos1.local");
        JSch.getLogger().log(Logger.Level.INFO, "Successfully connected.");
-       session.getConfig().setProperty(SessionConfig.STRICT_HOST_KEY_CHECKING, "no");
-       IdentityManager.getManager().addIdentity("/Users/ekoontz/.ssh/id_rsa","/Users/ekoontz/.ssh/id_rsa.pub");
+       session.getConfig().setProperty(SessionConfig.STRICT_HOST_KEY_CHECKING,
+         "no");
+       //IdentityManager.getManager().addIdentity("/Users/ekoontz/.ssh/id_rsa");
        session.connect();
+       //session.run();
+       try {Thread.sleep(10);} catch (InterruptedException e ){}
        session.disconnect();
        System.out.println("connected and disconnected successfully.");
      } catch (JSchException e) {
-       JSch.getLogger().log(Logger.Level.ERROR, "Got exception when trying to " +
-         " create the session.",e);
+       JSch.getLogger().log(Logger.Level.ERROR,
+         "Got exception when trying to create the session.",e);
      }
      return;
    }
