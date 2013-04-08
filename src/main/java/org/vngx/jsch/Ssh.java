@@ -23,7 +23,7 @@ public class Ssh {
        JSch.getLogger().log(Logger.Level.INFO, "Successfully connected.");
        session.getConfig().setProperty(SessionConfig.STRICT_HOST_KEY_CHECKING,
          "no");
-       //IdentityManager.getManager().addIdentity("/Users/ekoontz/.ssh/id_rsa");
+       IdentityManager.getManager().addIdentity("/Users/ekoontz/.ssh/id_rsa");
        session.connect();
        //session.run();
        try {Thread.sleep(10);} catch (InterruptedException e ){}
